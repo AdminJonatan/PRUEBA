@@ -104,9 +104,11 @@
                     <th scope="col">ESTADO</th>
                     <th scope="col">FECHA_INICIO</th>
                     <th scope="col">FECHA_FIN</th>
+                    <th>DIAS_POR_HACER</th>
+                    <th>FINALIZO_TAREA</th>
                     <th>EDIDAR</th>
                     <th>ELIMINAR</th>
-                    <th>DIFERECNIA</th>
+                    
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -119,9 +121,13 @@
                     <td>{{$item->estado}}</td>
                     <td>{{$item->fecha_inicio}}</td>
                     <td>{{$item->fecha_fin}}</td>
+                    <td>{{ $item->diasFaltantes}}</td>
+                    <td>{{ $item->diasFaltantes2}}</td>
                     <td><a href="" data-bs-toggle="modal" data-bs-target="#ModalEditar{{$item->ID}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a></td>
                     <td><a href="{{route('crud.delete',$item->ID)}}" onclick="return res()" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a></td>
-                    <td>{{$create= $item->fecha_inicio}} </td>
+                   
+                    
+             
                    
 
                             <!-- Modal modificarod datos-->
@@ -163,12 +169,12 @@
                                                   
                                                   <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Fecha Inicio</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtfechainicio" value="{{$item->fecha_inicio}}">
+                                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtfechainicio" value="{{$item->fecha_inicio}}">
                                                      <div class="mb-3">
 
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Fecha Fin</label>
-                                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtfechafin" value="{{$item->fecha_fin}}">
+                                                            <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtfechafin" value="{{$item->fecha_fin}}">
                                                              <div class="mb-3">
 
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

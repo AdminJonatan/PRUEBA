@@ -10,20 +10,27 @@ class CrudController extends Controller
 {
     public function index (){
         $datos=DB::select("select * from tareass");
- 
-        // Supongamos que $item es un modelo Eloquent con fechas.
- //  $item = TuModelo::find($id);
+        $diasFaltantes = 0;
+        $diasFaltantes2 = 0;
+       
+        $fecha= Carbon::now();
 
-  // $datos = TuModelo::find($fecha_inicio,$fecha_fin);
+            foreach ($datos as $dato) {
+                $dato->diasFaltantes = $fecha->diffInDays(Carbon::parse($dato->fecha_inicio));
+            }
+        
+       
+            foreach ($datos as $dato) {
+                $dato->diasFaltantes2 = $fecha->diffInDays(Carbon::parse($dato->fecha_fin));
+            }
+      
+          
 
-    // Calcula la diferencia de fechas usando Carbon.
-    //$diferenciaDeFechas = Carbon::parse($item->fecha_inicio)->diffInDays(Carbon::parse($item->fecha_fin));
-    //$diferenciaDeFechas = Carbon::parse($item->fecha_inicio)->diffInDays(Carbon::parse($item->fecha_fin));
+        return view('home', compact('datos'));
 
-    // Pasa $item y la diferencia de fechas a la vista.
-    return view('home')->with("datos",$datos);
-  //  return view('home', compact('item', 'diferenciaDeFechas'));
-    
+        //return view('home')->with(["datos" => $datos, "fecha" => $fecha]);
+   
+
     }
 
     /*
