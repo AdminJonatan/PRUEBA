@@ -10,8 +10,7 @@ class CrudController extends Controller
 {
     public function index (){
         $datos=DB::select("select * from tareass");
-        $diasFaltantes = 0;
-        $diasFaltantes2 = 0;
+     
        
         $fecha= Carbon::now();
 
